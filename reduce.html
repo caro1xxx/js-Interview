@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    Array.prototype.reduce = function (callback,pre){
+      for(let i=0; i<this.length; i++){
+        if(this[i] === undefined){
+          pre = callback(this[i],this[i+1],i+1,this)
+          i++
+        }else{
+          pre = callback(pre,this[i],i,this)
+        }
+      }
+      return pre
+    }
+    // 求和
+    const a = [1,2,3,4].reduce((acc,curr)=>{
+      return acc+curr;
+    },0)
+    // console.log(a)
+    // 去重
+    const data = [
+      {id:1,name:'张三'},
+      {id:2,name:'张三'},
+      {id:1,name:'李四'},
+    ]
+    let obj = [];
+    const b = data.reduce((acc,curr)=>{
+      if(!obj[curr.id]){
+        obj[curr.id] = true
+        acc.push(curr)
+      }
+      return acc;
+    })
+    console.log(b)
+  </script>
+</html>
