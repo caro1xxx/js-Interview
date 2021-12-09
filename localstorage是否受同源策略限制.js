@@ -1,0 +1,1 @@
+// 客户端（浏览器）出于安全性考虑，无论是 localStorage 还是 sessionStorage 都会受到同源策略限制
