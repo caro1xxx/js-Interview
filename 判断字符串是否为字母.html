@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function isWords(parmas) {
+    let str = parmas.split('')
+    str.map((value)=>{
+      let ASCLL = value.charCodeAt();
+      if((ASCLL >=65 && ASCLL <=90) || (ASCLL >=97 && ASCLL <=122)){
+      }else{
+        console.log('字符串包含非字母');
+      }
+    })
+  }
+  isWords('a#bDkPsaf')
+  
+</script>
+</html>

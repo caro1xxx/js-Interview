@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  const CHINESE = new RegExp("[\u4E00-\u9FA5]+");
+  var length = 0;
+  function calculateStringLength(params) {
+    for(i of params){
+      if(CHINESE.test(i)){
+        length +=2;
+      }else{
+        length +=1;
+      }
+    }
+    return length
+  }
+  console.log(calculateStringLength('你好js!'));
+</script>
+</html>
