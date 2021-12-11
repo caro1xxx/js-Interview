@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function bar(parmas) {
+    let temp = parmas[0];
+    parmas[0] = parmas[1];
+    parmas[1] = temp;
+    return parmas
+  }
+  console.log(bar([1,2]));
+</script>
+</html>
