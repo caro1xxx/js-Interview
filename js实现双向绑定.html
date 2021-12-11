@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>单向绑定非常简单，就是把Model绑定到View，当我们用JavaScript代码更新Model时，View就会自动更新。
+    有单向绑定，就有双向绑定。如果用户更新了View，Model的数据也自动被更新了，这种情况就是双向绑定。
+  </div>
+  <input id="input" type="text">
+  <p id="result"></p>
+</body>
+<script>
+  var input = document.getElementById('input');
+  input.value = 'lucy';
+  input.addEventListener('change',function (){
+    result.innerHTML += this.value
+  })
+</script>
+</html>
