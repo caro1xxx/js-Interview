@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function Daffodil() {
+    for(let i=100;i<1000;i++){
+      digits = i%10;
+      ten_digit = parseInt(i/10) % 10;
+      hundreds_digit = parseInt(i/100);
+      // Math对象用于执行数学任务，pow(x , y)函数用于求取 x 的 y 次幂
+      if(Math.pow(digits,3)+Math.pow(ten_digit,3)+Math.pow(hundreds_digit,3)== i){
+        console.log(i);
+      }
+    }
+  }
+  Daffodil()
+</script>
+</html>
