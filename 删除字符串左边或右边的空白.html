@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function foo(str,direction) {
+    let strArr = str.split('');
+    let result = '';
+    for(let i=0; i<strArr.length;i++){
+      if(strArr[i] == ' '){
+        strArr.splice(1,i);
+      }
+      result +=strArr[i]
+    }
+    return result;
+  }
+  console.log(foo('  list',1));
+</script>
+</html>
