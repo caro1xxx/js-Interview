@@ -1,0 +1,6 @@
+JS原生选择器:  getElementById()
+              getElementsByName()
+              getElementsByTagName()
+              getElementsByClassName()
+              querySelector()
+              querySelectorAll()
