@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function loadXMLHttp(){
+    var XMLHTTP;
+    if(window.XMLHttpRequest){
+      XMLHTTP = new XMLHttpRequest;
+    }else{
+      XMLHTTP = new ActiveXObject('Microsoft.XMLHTTP');
+    }
+    XMLHTTP.onreadystatechange = function(){
+      if(XMLHTTP.readyState ==  4 && XMLHTTP.status == 200){
+        console.log(XMLHTTP.responseText);
+      }else{
+        console.log(new Error('XMLHTTP error'));
+      }
+    }
+    XMLHTTP.open('GET','https://www.google.com',true);
+    // XMLHTTP.open('GET','https://www.google.com?='+Math.random(),true); 这里可以添加上生成随机数,可以避免get得到浏览器缓存
+    XMLTTP.send();
+  }
+</script>
+</html>
