@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #span2{
+      background-color: rgb(126, 126, 231);
+    }
+    </style>
+</head>
+
+<body>
+  <span id="span" style="background-color: antiquewhite;">1</span>
+  <span id="span2">1</span>
+</body>
+<script>
+  //不考虑!important并且是内联的情况
+  let span = document.getElementById('span');
+  console.log(span.style["backgroundColor"]);
+  let cssStyle = document.defaultView.getComputedStyle(span2,null);
+  console.log(cssStyle.getPropertyValue('background-color'));
+</script>
+
+</html>

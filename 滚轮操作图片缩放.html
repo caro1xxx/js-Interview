@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <img id="img" style="width: 500px;" src="https://thumbs.dreamstime.com/b/sheep-meadows-piture-sheep-resting-meadows-uptop-144439419.jpg" alt="">
+</body>
+<script>
+  var img = document.getElementById('img');
+  function zoom(e) {
+    if(e.wheelDelta > 0){
+      x = img.style['width'].split('px')
+      img.style['width'] = parseInt(x[0])+20+'px'
+    }
+    else{
+      x = img.style['width'].split('px')
+      img.style['width'] = parseInt(x[0])-20+'px'
+    }
+  }
+
+  img.addEventListener('DOMMouseScroll',zoom,false)
+  window.onmousewheel=document.onmousewheel=zoom;
+</script>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  防抖和节流:限制函数执行次数,在一些场景下,由于用户重复触发什么事件,导致函数被多次执行
+  防抖:通过设置定时器的方式,在一定的时间间隔内,将多次触发变成一次触发
+  节流:减少一段时间内的触发频率
+  <br>
+  <input type="text">
+  <button id="sub">提交</button>
+</body>
+<script>
+  // 防抖
+  let sub = document.getElementById('sub');
+  sub.addEventListener('click', debounce(submit), false);
+
+  function submit() {
+    console.log(1);
+  }
+
+  // function debounce(fn) {
+  //   // t用于装定时器
+  //   let t = null;
+  //   // 返回一个函数,因为在addEventListener的地方是window自动调用的debounce函数
+  //   return function () {
+  //     // 判断t内是否有定时器
+  //     if (t) { clearTimeout(t) }
+  //     // 没有我们就设置
+  //     t = setTimeout(function () {
+  //       fn();
+  //     }, 1000);
+  //   }
+  // }
+
+  // // debounce内参数传递问题和this问题
+  // function debounce(fn) {
+  //   let t = null;
+  //   return function () {
+  //     if (t) { clearTimeout(t) }
+  //     t = setTimeout(() => {
+  //       fn.apply(this,arguments);
+  //     }, 1000);
+  //   }
+  // }
+
+  // 对一次点击取消防抖
+  function debounce(fn) {
+    let t = null;
+    return function () {
+      if (t) { clearTimeout(t) }
+      if(true){
+        var firstCilck = !t;
+        if(firstCilck){
+          fn.apply(this,arguments);
+        }
+        t = setTimeout(() => {
+          t = null;
+        }, 3000);
+      }
+      else{
+        t = setTimeout(() => {
+          fn.apply(this,arguments);
+        }, 3000);
+      }
+    }
+  }
+
+  // 节流
+  function thrifty(fn,delay){
+    var begin = 0;
+    return function(){
+      var cur = new Date().getTime();
+      if(cur-begin > delay){
+        fn.apply(this,arguments);
+        begin = cur;
+      }
+    }
+  }
+</script>
+
+</html>

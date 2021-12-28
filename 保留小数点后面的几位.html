@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  // 原理就是小数点移动,然后取整,然后再小数点移动回原来的位置
+  function getFixedNum(num,t=2){
+    return Math.round(num*Math.pow(10,t)) / Math.pow(10, t);
+  }
+
+  console.log(getFixedNum(2.112145,3));
+</script>
+</html>
