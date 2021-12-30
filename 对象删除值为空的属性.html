@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  定义:
+    '',' ',null,undefined
+</body>
+<script>
+  function clear(obj){
+    let clearValue = ['',' ',null,undefined];
+    for(let i in obj){
+      if(clearValue.indexOf(obj[i]) != -1){
+        delete obj[i];
+      }
+    }
+    return obj
+  }
+  var obj = {
+    name:'',
+    age:17,
+    sex:null,
+    address:undefined,
+    like:'basketball'
+  }
+  clear(obj)
+  console.log(obj);
+</script>
+</html>
