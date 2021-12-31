@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div style="height: 400px;width: 400px;background-color: aqua;">
+    box
+  </div>
+</body>
+<script>
+  var box = document.querySelector('div');
+  // console.log(box.style.width,box.style.width); 只能取到内联
+  // console.log(window.getComputedStyle(box).width); 可以取到内联,style标签,link引入
+  // console.log(box.getBoundingClientRect().width); 可以取到内联,style标签,link引入,并且可以计算元素的绝对位置
+  
+</script>
+</html>
