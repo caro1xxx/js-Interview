@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  console.log({}+[]==[]+{});
+  // 因为[]，{}先后调用valueOf() 和 toString() 方法，
+  // [] 和 {} 的 valueOf() 都返回对象自身，所以都会调用 toString()，
+  // 最后的结果是字符串串接。[].toString() 返回空字符串，({}).toString() 返回“[object Object]”。
+  // 最后的结果就是“[object Object]”
+</script>
+</html>
