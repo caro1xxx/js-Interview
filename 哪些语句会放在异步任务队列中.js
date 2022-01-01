@@ -1,0 +1,6 @@
+ajax
+setTimeout setInterval
+Promise
+async
+dom事件event
+回调函数callback
