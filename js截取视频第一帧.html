@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <video controls width="700" height="300" preload  src="./asset/js截取视频.mp4"></video>
+  <img src="" alt="">
+</body>
+<script>
+  var video = document.querySelector('video');
+  var canvas = document.createElement('canvas');
+  var ctx = canvas.getContext('2d');
+  var img =document.querySelector('img');
+  video.addEventListener('loadeddata',function (e){
+    canvas.width = this.videoWidth
+		canvas.height = this.videoHeight
+		width = this.videoWidth
+		height = this.videoHeight
+		ctx.drawImage(this, 0, 0, width, height);
+		var src = canvas.toDataURL('image/jpeg');
+		img.src = src;
+  })
+</script>
+</html>
