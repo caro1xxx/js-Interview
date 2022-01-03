@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  function OnlyClacAddAndMultiExpression(expression) {
+    // 获取表达式中所有运算符
+    const operatorCollection = expression.match(/\D/g)
+    // 判断每一个运算符是否在["+","*"]中,所有项为true整体才为true
+    const flag = operatorCollection.every(v => ["+", "*"].includes(v))
+    return flag && eval(expression)
+  }
+
+  console.log(OnlyClacAddAndMultiExpression('1+2*3+2'));
+</script>
+
+</html>
