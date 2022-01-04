@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body onload="provincial_init()">
+  <select name="provincial" id="prov">
+    <option>选择省份</option>
+  </select>
+  <select name="city" id="city">
+    <option>选择城市</option>
+  </select>
+  <select name="county" id="county">
+    <option>选择区县</option>
+  </select>
+</body>
+<script>
+  var provincialElement = document.getElementById('prov');
+  var cityElement = document.getElementById('city');
+  var countylement = document.getElementById('county');
+  var provincial_name = ['北京','重庆','广东','上海'];
+  var city_name = [['北京','北京'],['重庆','重庆'],['上海','上海'],['广东','广州市','佛山市']]
+  var county_name = [['北京','海淀区','中关村'],['重庆','江北区','渝北区'],['广州市','黄埔区','萝岗区'],['佛山市','南海区','高明区'],['上海','虹口区','嘉定区']]
+
+  //初始化省份
+  function provincial_init(){
+    for (let i = 0; i <provincial_name.length; i++) {
+      let child = document.createElement('option');
+      let content= document.createTextNode(provincial_name[i]);
+      child.appendChild(content);
+      provincialElement.appendChild(child);
+    }
+  }
+
+  //监听省份变化
+  provincialElement.addEventListener('change',function (e){
+    resetCity(countylement,'选择区县');
+    resetCity(cityElement,'选择城市');
+    city_init(this.value);
+  })
+
+  //监听c城市变化
+  cityElement.addEventListener('change',function (e){
+    country_init(this.value);
+    console.log(this.value);
+  })
+
+  //城市
+  function city_init(provincialName){
+    for(let i=0;i<city_name.length;i++){
+      if(city_name[i][0] === provincialName){
+        city_name[i].map((item,key)=>{
+          if(key !=0){
+            let child = document.createElement('option');
+            let content= document.createTextNode(item);
+            child.appendChild(content);
+            cityElement.appendChild(child);
+          }
+        })
+      }
+    }
+  }
+
+  //区县
+  function country_init(cityName){
+    countylement.options.length =0;
+    for(let i=0;i<county_name.length;i++){
+      if(county_name[i][0] === cityName){
+        county_name[i].map((item,key)=>{
+          if(key !=0){
+            let child = document.createElement('option');
+            let content= document.createTextNode(item);
+            child.appendChild(content);
+            countylement.appendChild(child);
+          }
+        })
+      }
+    }
+  }
+
+  //重置选择框
+  function resetCity(element,text){
+    element.options.length = 0;
+    let child = document.createElement('option');
+    let content = document.createTextNode(text);
+    child.appendChild(content);
+    element.appendChild(child);
+  }
+</script>
+</html>
