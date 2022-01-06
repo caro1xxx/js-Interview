@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  const Store = {
+    setItem(key, data, expires) {
+      const now = new Date().getTime();
+      const item = {
+        expires: now + expires,
+        data
+      };
+      localStorage.setItem(key, JSON.stringify(item));
+    },
+    getItem(key) {
+      const item = localStorage.getItem(key);
+      if (item === null) return null;
+      const now = new Date();
+      const result = JSON.parse(item);
+
+      if (now.getTime() > result.expires) {
+        localStorage.removeItem(key);
+        return null;
+      }
+      return result.data;
+    }
+  };
+</script>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function increase(initValue,step,speed,sumValue){
+    let init = initValue;
+    let time = setInterval(() => {
+      init +=step;
+      console.log(init);
+      if(init>=sumValue){clearInterval(time)}
+    }, speed);
+    return init
+  }
+  console.log(increase(1,2,500,12));
+</script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function _merge(){
+    let obj = {};
+    for(let i = 0;i<arguments.length;i++){
+      for(item in arguments[i]){
+        obj[item] = arguments[i][item];
+      }
+    }
+    return obj;
+  }
+  let obj1 = {
+    name:'jack',
+    age:20,
+  }
+  let obj2 = {
+    sex:'male',
+    address:'china',
+  }
+  console.log(_merge(obj1,obj2));
+</script>
+</html>

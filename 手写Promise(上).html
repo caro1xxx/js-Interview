@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function _Promise(executor){
+    this.PromiseState = 'pending';
+    this.PromiseResult = null;
+    const _this = this;
+    _this.callbacks = []
+
+    function resolve (data){
+      if(_this.PromiseState === 'pending'){
+        _this.PromiseState = 'fulfilled';
+        _this.PromiseResult = data;
+        _this.callbacks.forEach((item) => {
+          item.onResolved(data);
+        })
+      }
+    }
+
+    function reject (data){
+      if(_this.PromiseState === 'pending'){
+        _this.PromiseState = 'rejected';
+        _this.PromiseResult = data;
+        _this.callbacks.forEach((item) => {
+          item.onRejected(data);
+        })
+      }
+    }
+
+
+    try{
+      executor(resolve,reject);
+    }catch(e){
+      reject(e);
+    }
+  }
+
+  _Promise.prototype.then = function (onResolved,onRejected){
+    try{
+      return new _Promise((resolve,reject)=>{
+        const callback = (type)=>{
+          try{
+            let result = type(this.PromiseResult);
+            if(result instanceof _Promise){
+              result.then((value)=>{
+                resolve(value)
+              },(reason)=>{
+                reject(reason)
+              })
+            }else{
+              resolve(result);
+            }
+          }catch(error){
+            reject(error)
+          }
+        }
+        if(this.PromiseState === 'fulfilled'){
+          callback(onResolved);
+        }
+        if(this.PromiseState === 'rejected'){
+          callback(onRejected);
+        }
+        if(this.PromiseState === 'pending'){
+          this.callbacks.push({
+            onResolved:()=>{
+              callback(onResolved);
+            },
+            onRejected:()=>{
+              callback(onRejected);
+            },
+          })
+        }
+      })
+      
+    }catch(e){
+      reject(e)
+    }
+  }
+
+  let p = new _Promise((resolve,reject)=>{
+    setTimeout(()=>{
+      resolve('ok')
+    },1000)
+  }).then(value=>{
+    return new _Promise((resolve,reject)=>{
+      // reject('no')
+      throw 'error';
+    })
+  },reason=>{
+    return new _Promise((resolve,reject)=>{
+      resolve('ok')
+    })
+  })
+
+  // let res = p.then((value)=>{
+  //   return new _Promise((resolve,reject)=>{
+  //     resolve('1')
+  //   })
+  // },(reason)=>{
+  //   console.log(reason);
+  // })
+
+  console.log(p);
+  // console.log(res);
+</script>
+</html>

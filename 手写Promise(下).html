@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  实现异常穿透,和其他api
+</body>
+<script>
+  function _Promise(executor){
+    this.PromiseState = 'pending';
+    this.PromiseResult = null;
+    const _this = this;
+    _this.callbacks = []
+
+    function resolve (data){
+      if(_this.PromiseState === 'pending'){
+        _this.PromiseState = 'fulfilled';
+        _this.PromiseResult = data;
+        //加定时器是为了让then的回调是异步执行的
+        setTimeout(()=>{
+          _this.callbacks.forEach((item) => {
+            item.onResolved(data);
+          })
+        })
+      }
+    }
+
+    function reject (data){
+      if(_this.PromiseState === 'pending'){
+        _this.PromiseState = 'rejected';
+        _this.PromiseResult = data;
+        setTimeout(()=>{
+          _this.callbacks.forEach((item) => {
+            item.onRejected(data);
+          })
+        })
+      }
+    }
+
+
+    try{
+      executor(resolve,reject);
+    }catch(e){
+      reject(e);
+    }
+  }
+
+  //then方法
+  _Promise.prototype.then = function (onResolved,onRejected){
+    // 判断没传递第二个参数的时候
+    if(typeof onRejected !== 'function'){
+      onRejected = reason => {
+        throw reason;
+      }
+    }
+
+    // 判断没传递第一个参数的时候
+    if(typeof onResolved !== 'function'){
+      onResolved = value =>{return value }
+    }
+
+    try{
+      return new _Promise((resolve,reject)=>{
+        const callback = (type)=>{
+          try{
+            let result = type(this.PromiseResult);
+            if(result instanceof _Promise){
+              result.then((value)=>{
+                resolve(value)
+              },(reason)=>{
+                reject(reason)
+              })
+            }else{
+              resolve(result);
+            }
+          }catch(error){
+            reject(error)
+          }
+        }
+        if(this.PromiseState === 'fulfilled'){
+          //加定时器是为了让then的回调是异步执行的
+          setTimeout(()=>{
+            callback(onResolved);
+          });
+        }
+        if(this.PromiseState === 'rejected'){
+          setTimeout(()=>{
+            callback(onRejected);
+          });
+        }
+        if(this.PromiseState === 'pending'){
+          this.callbacks.push({
+            onResolved:()=>{
+              callback(onResolved);
+            },
+            onRejected:()=>{
+              callback(onRejected);
+            },
+          })
+        }
+      })
+      
+    }catch(e){
+      reject(e)
+    }
+  }
+  //catch方法
+  _Promise.prototype.catch = function (onRejected){
+    return this.then(undefined,onRejected)
+  }
+  //resolve方法
+  _Promise.resolve = function (promise){
+    return new _Promise((resolve,reject)=>{
+      if (promise instanceof _Promise){
+        promise.then((value)=>{
+          resolve(value)
+        },(reason)=>{
+          reject(reason);
+        })
+      }else{
+        resolve(promise)
+      }
+    })
+  }
+  //reject方法
+  _Promise.reject = function (reason){
+    return new _Promise((resolve,reject)=>{
+      reject(reason);
+    })
+  }
+  // all方法
+  _Promise.all = function(promiseArray){
+    return new _Promise((resolve,reject)=>{
+      let arr = [];
+      if(promiseArray instanceof  Array){
+        for(let i =0;i<promiseArray.length;i++){
+          promiseArray[i].then((value)=>{
+            arr[i]= value;
+            if(i == promiseArray.length-1 ){
+              resolve(arr);
+            }
+          },(reason)=>{
+            reject(reason);
+          })
+        }
+      }else{
+        throw '请输入promise'
+      }
+    })
+  }
+  //race方法
+  _Promise.race = function(promiseArray){
+    return new _Promise((resolve,reject)=>{
+      if(promiseArray instanceof  Array){
+        for(let i =0;i<promiseArray.length;i++){
+          promiseArray[i].then((value)=>{
+            resolve(value);
+          },(reason)=>{
+            reject(reason);
+          })
+        }
+      }else{
+        throw '请输入promise'
+      }
+    })
+  }
+
+
+  let p = new _Promise((resolve,reject)=>{
+    // setTimeout(()=>{
+      resolve('ok')
+    // },1000)
+    console.log(111);
+  }).then().then(value=>{
+    console.log(222);
+  }).then(value=>{
+    console.log(333);
+  }).catch((reason)=>{
+    console.log(reason);
+  })
+  console.log(444);
+
+  // let p1 = new _Promise((resolve,reject)=>{
+  //   setTimeout(()=>{
+  //     reject('1')
+  //   },1000)
+  // })
+  // let p2 = new _Promise((resolve,reject)=>{
+  //   resolve('2')
+  // })
+  // let p3 = new _Promise((resolve,reject)=>{
+  //   resolve('3')
+  // })
+
+  // let promise = _Promise.race([p1,p2,p3])
+
+  console.log(p);
+</script>
+</html>
