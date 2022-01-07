@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function exchange(parmas){
+    let arr =[];
+    let odd  = [];
+    let even = [];
+    let num = 0;
+    for(let i=0;i<parmas.length;i++){
+      if(i%2 == 1){
+        odd.push(parmas[i]);
+      }else{
+        even.push(parmas[i]);
+      }
+    }
+    while(arr.length!=(odd.length+even.length)){
+      arr.push(odd[num],even[num]);
+      num++;
+    }
+    return arr;
+  }
+
+  console.log(exchange([1,2,3,4]));
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function _split(params){
+    let splitNum = undefined;
+    let arr = [];
+    for(let i=1;i<=params.length;i++){
+      if(params.length%i===0 && i!=1 && (i*2 === params.length)){
+        splitNum = i;
+        break;
+      }
+    }
+    arr.push(params.slice(0,splitNum),params.slice(splitNum,params.length))
+    return arr
+  }
+  console.log(_split([1,2,3,4,5,6,1,2]));
+</script>
+</html>
