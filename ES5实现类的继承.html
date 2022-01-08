@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function Parent(name){
+    this.name = name;
+    this.arr = [1,2,3];
+  }
+  Parent.prototype.say = function (){
+    return 'hello';
+  }
+
+  function Child(name,age){
+    Parent.call(this,name);
+    this.age = age;
+  }
+
+  Child.prototype = Object.create(Parent.prototype);
+  Child.prototype.constructor = Child;
+
+  // let choi = new Parent('choi');
+  let choi_extend = new Child('choi',12);
+</script>
+</html>
