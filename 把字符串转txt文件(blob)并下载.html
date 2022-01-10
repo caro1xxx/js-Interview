@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  // 构造 Blob
+  let b = new Blob(['Say something...'], { type: 'text/plain' });
+  // 构造下载链接
+  let url = URL.createObjectURL(b);
+  // 构造 a 元素用于执行下载
+  let a = document.createElement('a');
+  a.setAttribute('href', url);
+  a.setAttribute('download', 'test.txt');
+  a.click();
+  // 清理
+  a.remove();
+  URL.revokeObjectURL(url);
+</script>
+
+</html>
