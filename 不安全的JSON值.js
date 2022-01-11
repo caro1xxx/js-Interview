@@ -1,0 +1,4 @@
+function
+undefined
+symbol
+循环使用的对象

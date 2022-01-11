@@ -13,7 +13,7 @@
 </body>
 <script>
   // 构造 Blob
-  let b = new Blob(['Say something...'], { type: 'text/plain' });
+  let b = new Blob(['Say something...\n,nihao'], { type: 'text/plain' });
   // 构造下载链接
   let url = URL.createObjectURL(b);
   // 构造 a 元素用于执行下载
