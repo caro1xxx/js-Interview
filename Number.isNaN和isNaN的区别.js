@@ -1,0 +1,2 @@
+isNaN不会检测是否是number
+Number.isNaN会检测是否为Number
