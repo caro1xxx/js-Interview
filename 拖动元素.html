@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="box" style="background-color: antiquewhite;width: 300px;height: 300px;margin-left: 100px;">
+
+  </div>
+</body>
+<script>
+  let box = document.getElementById('box');
+  box.addEventListener('mousedown',function(e){
+    var x = e.pageX-box.offsetLeft;
+    var y = e.pageY-box.offsetTop;
+    function move(e){
+      box.style.marginLeft = e.pageX - x +'px';
+      box.style.marginTop = e.pageY - y+ 'px';
+    }
+    box.addEventListener('mousemove',move)
+    box.addEventListener('mouseup',function(){
+      box.removeEventListener('mousemove',move)
+    })
+  })
+  
+  
+
+</script>
+</html>
