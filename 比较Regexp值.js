@@ -1,0 +1,3 @@
+Regexp是引用类型
+就算两个Regexp实例值相等,但是内存地址不相等
+所以两个Regexp比较永远是false
