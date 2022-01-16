@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function request(num){
+    return new Promise((resolve,reject)=>{
+      setTimeout(() => {
+        resolve(num*2)
+      }, 1000);
+    })
+  }
+  // let p = request(2).then((value)=>{
+  //   console.log(value*100);
+  // })
+  async function fn(num){
+    // let res = await request(3);
+    // let res2 = await request(res);
+    // console.log(res,res2);
+    return num;
+  }
+  fn(10).then((value)=>{console.log(value);})
+</script>
+</html>
