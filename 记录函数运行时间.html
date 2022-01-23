@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  //使用回调的方式确定函数执行时间,这种方式也存在一定误差
+  function foo(callback){
+    console.log('开始:'+new Date());
+    callback();
+    console.log('结束:'+new Date())
+  }
+  function fn(){
+    console.log('函数执行');
+  }
+  foo(fn);
+
+</script>
+</html>
