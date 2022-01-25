@@ -1,0 +1,9 @@
+Number =>除0和NaN以外为true
+String =>非空为true
+Boolean =>true为true
+undefined => false
+null => false
+Object => 除document.all以外为true
+Function => true
+Symbol => true
+BigInt => 除0和NaN以外为true
