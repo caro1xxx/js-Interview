@@ -10,8 +10,16 @@
   
 </body>
 <script>
-  function foo(){
-    window.history.pushState("","","/test")
+  let arr = [1,2,3,4,5];
+  function topping(index){
+    let newArray = [];
+    newArray.push(arr[index]);
+    arr.splice(index,1);
+    arr.map((item)=>{
+      newArray.push(item);
+    });
+    return newArray;
   }
+  console.log(topping(2))
 </script>
 </html>
