@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div style="height:1000px">1</div>
+</body>
+<script>
+  function getScrollTop(){
+    let scrollTopValue = 0;
+    if(document.documentElement &&document.documentElement.scroll){
+      scrollTopValue = document.documentElement.scrollTop;
+    }else if(document.body){
+      scrollTopValue = document.body.scrollTop
+    }
+  }
+</script>
+</html>
