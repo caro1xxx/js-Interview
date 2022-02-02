@@ -1,0 +1,1 @@
+RequireJS遵循的是AMD(异步模块定义)规范,seaJS遵循的是CMD(通用模块定义)规范

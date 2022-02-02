@@ -1,0 +1,6 @@
+1.构造函数可以当做普通函数调用,class只能new 调用
+2.class内部默认开启严格模式
+3.class不存在变量提升(函数提升),在定义class前使用new调用会报错
+4.class内部定义的方法和属性名都是不可遍历的
+5.class内部定义的方法没有prototype
+6.当class时没有定义constoructor函数时,会隐式的插入调用constoructor(代表实例的this)
