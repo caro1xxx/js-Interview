@@ -10,9 +10,15 @@
   
 </body>
 <script>
-  function foo(){
-    return 1+1;
+  class Foo {
+    #bar(){
+      console.log('bar')
+    }
+    baz(){
+      //允许在class内部访问#bar
+      this.#bar;
+    }
   }
-  console.log(1)
+  new Foo().baz();
 </script>
 </html>
