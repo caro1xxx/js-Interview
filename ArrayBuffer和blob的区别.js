@@ -1,0 +1,2 @@
+Blob:用于操作二进制文件
+ArrayBuffer:用于操作内存

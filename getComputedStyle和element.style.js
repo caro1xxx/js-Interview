@@ -1,0 +1,2 @@
+getComputedStyle:获取所以样式,并且可以获取计算和的属性
+element.style:只能获取内联样式
