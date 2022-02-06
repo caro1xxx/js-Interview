@@ -1,0 +1,1 @@
+jsonp是通过script标签解决同源问题,而script只是get方法拉去资源,所以不支持post方法
