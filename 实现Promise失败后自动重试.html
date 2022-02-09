@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  // 实现
+  Promise.retry = (fn, options) => {
+  // 指定默认次数和默认延迟
+  const { max = 3, delay = 0 } = options;
+  let curMax = max;
+  return new Promise(async (resolve, reject) => {
+    // 判断最大次数
+    while (curMax > 0) {
+      try {
+        // await等待fn执行结束
+        const res = await fn(delay);
+        // 如果res是个成功的Promise那么整个函数就不再执行了
+        resolve(res);
+        return;
+        // 如果res是个失败的Promise那么就会抛出错误,catch捕获
+      } catch (error) {
+        // 最大次数-1
+        curMax--;
+        console.warn(`剩余次数${curMax}`);
+        // 判断次数
+        if (!curMax) reject(error);
+      }
+    }
+  })
+}
+
+
+// 调用       接收一个延迟参数
+const resolveData = (delay) => {
+  return new Promise((resolve, reject) => {
+    // 定时器
+    setTimeout(() => {
+      // 使用random来生成随机数
+      let x = Math.random();
+      console.log(x)
+      // 如果生成的随机数是大于0.9的就会返回一个成功的Promise
+      if (x > 0.9) {
+        resolve('success');
+        // 反之,返回一个失败的Promise
+      } else {
+        reject(new Error('fail'));
+      }
+    },delay)
+  })
+}
+
+
+// IIFE
+(async () => {
+  try {
+    // 传入写好的函数,和options
+    const res = await Promise.retry(resolveData, { max: 5, delay: 1000 });
+    // warn会等到res出结果
+    console.warn('result', res);
+  } catch (error) {
+    // 捕获错误,或者次数使用完毕
+    console.warn(error)
+  }
+})()
+</script>
+</html>
