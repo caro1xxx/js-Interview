@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p></p>
+</body>
+<script>
+  //querySelector  =>通过标签名获取node
+  //逆方法 => 通过node获取标签名
+  document.queryNode = function (node) {
+    if (node.id) {
+      return '#' + node.id;
+    }
+    if (node.className) {
+      return '.' + node.id;
+    }
+    return node.nodeName;
+  };
+  let node = document.querySelector('p');
+  let c = document.queryNode(node);
+  console.log(c);
+</script>
+
+</html>
