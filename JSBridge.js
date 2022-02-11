@@ -1,0 +1,3 @@
+关于 JSBridge,最早遇到的是微信的 WeiXinJSBridge(现在被封装成 JSSDK)
+各种Web页面可以通过Bridge调用微信提供的一些原生功能为用户提供相关的功能
+JsBridge就相当于是js和原生应用之前交互的桥梁

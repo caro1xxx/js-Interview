@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <img width="300" height="300" src="" alt="">
+</body>
+<script>
+  let reader = new FileReader();
+  let img = document.querySelector('img');
+  let bd = document.querySelector('body');
+  bd.addEventListener('paste',function(e){
+    if(e.clipboardData.files.length !== 1) return false;
+    reader.readAsDataURL(e.clipboardData.files[0]);
+    reader.addEventListener('load',function (e){
+      img.src = reader.result
+    })
+  })
+</script>
+</html>
