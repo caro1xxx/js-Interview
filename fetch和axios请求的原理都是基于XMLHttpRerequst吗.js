@@ -1,0 +1,1 @@
+axios是基于XMLHttpRequest的封装，而fetch是js原生支持的网络请求api，这在浏览器底层进行了支持

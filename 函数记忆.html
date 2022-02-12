@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function _cache (fn) {
+    var cache= {};
+    return function (...arg){
+      var key = arg.length + arg.join(",");  // 根据传参构建唯一的key
+      if(cache[key]){ // 命中缓存，直接返回缓存值
+        return cache[key];
+      };
+      return cache[key] = fn(...arg); // 否则，执行fn，并且保存
+    }
+  }
+
+  function foo(num){
+    console.log('执行函数foo');
+    return num;
+  }
+  let newFoo = _cache(foo);
+</script>
+</html>
