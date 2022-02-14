@@ -1,0 +1,1 @@
+window.getComputedStyle(element).attribute

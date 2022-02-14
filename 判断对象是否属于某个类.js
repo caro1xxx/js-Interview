@@ -1,0 +1,1 @@
+instanceof 运算符检测构造函数的 prototype 属性 是否出现在这个实例对象的原型链上
