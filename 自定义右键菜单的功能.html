@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul id="menu" style="visibility: hidden;">
+    <li>复制</li>
+    <li>粘贴</li>
+    <li>剪切</li>
+  </ul>
+</body>
+<script>
+  /* 
+    思路
+      触发contextmenu事件,屏蔽浏览器默认事件
+  */
+  let menu = document.getElementById("menu");
+  window.addEventListener("contextmenu", function (event) {
+    event.preventDefault();
+    menu.style.marginTop = event.clientY + "px";
+    menu.style.marginLeft = event.clientX + "px";
+    menu.style.visibility = "visible";
+  })
+  window.addEventListener("click", function (event) {
+    event.preventDefault();
+    menu.style.visibility = "hidden";
+  })
+</script>
+
+</html>

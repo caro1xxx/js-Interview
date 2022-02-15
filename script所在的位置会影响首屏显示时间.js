@@ -1,0 +1,3 @@
+script如果放在头部,会阻塞dom树的解析和构建
+解决:
+  加入属性defer,或者async,注意async无法保证js加载的顺序是按照script添加的顺序加载
