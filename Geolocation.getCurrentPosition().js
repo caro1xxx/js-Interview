@@ -1,0 +1,1 @@
+Geolocation.getCurrentPosition():用于获取当前设备的位置
