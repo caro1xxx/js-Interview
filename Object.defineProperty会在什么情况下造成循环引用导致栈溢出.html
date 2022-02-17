@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  let obj = {
+    name: 'jack',
+    age: 18
+  }
+  Object.defineProperty(obj, 'age', {
+    get() {
+      return this.age   // 循环引用导致栈溢出
+    },
+    set(val) {
+      this.age = val
+    }
+  })
+  console.log(obj.age);
+  // Uncaught RangeError: Maximum call stack size exceeded
+</script>
+
+</html>
