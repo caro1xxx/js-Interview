@@ -7,10 +7,59 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <canvas id="canvas" width="2000" height="2000"></canvas>
 </body>
 <script>
-  console.log(decodeURIComponent(document.cookie));
-  document.cookie = "name=@/d]你好"
+  class Main {
+    init() {
+      var cvs = document.getElementById("canvas");
+      var ctx = cvs.getContext("2d");
+      var _img = new Image();
+      _img.src = "http://127.0.0.1:5500/asset/masaike.jpg";
+      _img.onload = () => {
+        ctx.drawImage(_img, 0, 0);
+        let _db = ctx.getImageData(0, 0, cvs.width, cvs.height);
+        ctx.clearRect(0, 0, 640, 1136);
+        ctx.putImageData(this.toPixelate(_db, ctx, 5), 0, 0);
+      }
+    }
+
+    toPixelate(imgDb, ctx, lv) {
+      if (!lv) {
+        lv = 3;
+      }
+      let rsl = ctx.createImageData(imgDb.width, imgDb.height);
+      let _db1 = [];
+      for (let i = 0; i < imgDb.data.length; i += 4) {
+        _db1.push([
+          imgDb.data[i], imgDb.data[i + 1], imgDb.data[i + 2], imgDb.data[i + 3]
+        ])
+      }
+      for (let i = 0; i < imgDb.width; i++) {
+        for (let j = 0; j < imgDb.height; j++) {
+          let fi = i - (i % lv);
+          let fj = j - (j % lv);
+          _db1[j * imgDb.width + i] = [..._db1[fj * imgDb.width + fi]];
+        }
+      }
+
+      _db1.forEach((v, i) => {
+        const k = i * 4;
+        rsl.data[k] = v[0];
+        rsl.data[k + 1] = v[1];
+        rsl.data[k + 2] = v[2];
+        rsl.data[k + 3] = v[3];
+      })
+
+      return rsl;
+    }
+
+  }
+
+  var main;
+  window.onload = function () {
+    main = new Main();
+    main.init();
+  }
 </script>
 </html>
