@@ -1,0 +1,2 @@
+arguments:类数组对象,不是正常的数组
+由于 arguments不是真正的数组，所以没有slice方法，通过apply可以调用数组对象的slice方法，从而将arguments 类数组转换为数组
