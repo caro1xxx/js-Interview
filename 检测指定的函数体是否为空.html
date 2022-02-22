@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  /* 
+    原理:
+      把函数toString转化为字符串形式,然后再用正则匹配{}内是否有语句
+  */
+  function isEmptyFn(fun){
+    try{
+      return (
+        fun
+          .toString()
+          .replace(/\s/g, '')
+          .match(/\{\}/g)
+          .join() === '{}'
+      );
+    } catch {
+      return false
+    }
+  }
+
+  function foo(){
+    
+  }
+  console.log(isEmptyFn(foo));
+</script>
+</html>
