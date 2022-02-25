@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  let list= {
+    key:['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyA', 'KeyB'],
+    cd:true,
+    keydown:[],
+  }
+
+  window.onkeydown = function (key) {
+    list.keydown.push(key.code);
+
+    if(key.code === 'KeyB'){
+
+      if(list.cd){
+        for(let i=0;i<list.key.length;i++){
+          if(list.key[i] !== list.keydown[i]) return false;
+        }
+        
+        list.cd = false;
+        let cd = setTimeout(()=>{list.cd=true},10000)
+        list.keydown = [];
+        console.log('Killing skill');
+      }else{
+        console.log('cd');
+      }
+
+    }
+
+  }
+  
+</script>
+</html>
