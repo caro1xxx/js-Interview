@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>1</div>
+  <p>1</p>
+</body>
+<script>
+  function setRootFontSize() {
+    // var a = document.documentElement, 以html为根元素
+    var a = document.querySelector('div'), //以指定元素作为根元素
+    // getBoundingClientRect: 方法返回元素的大小及其相对于视口的位置
+    b = a.getBoundingClientRect().width || screen.width || 320;
+    a.style.fontSize = (750 >= b ? b : 750) / 7.5 + 'px';
+  }
+  setRootFontSize();
+</script>
+
+</html>
