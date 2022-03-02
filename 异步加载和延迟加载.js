@@ -1,0 +1,5 @@
+异步加载:async
+浏览器会在解析HTML的同时进行加载javascript，一旦该javascript加载完毕，浏览器会暂停HTML的加载并执行javascript，之后继续HTML的加载。
+
+延迟加载: defer
+同样是解析HTML的同时进行加载javascript，但是浏览器会等待HTML全部解析完毕后再进行执行已加载的javascript。
