@@ -1,0 +1,2 @@
+DomContentLoaded先执行,它在DOM内容加载完毕,就可以执行,而不必等待img,css加载完成
+onload需要所有资源全都加载完成才可以;
