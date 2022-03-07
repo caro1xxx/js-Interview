@@ -11,11 +11,8 @@
   <p>1</p>
 </body>
 <script>
-  let printDom = document.getElementsByClassName('print')[0].innerHTML;
-  // console.log(printDom)
-  const html = document.body.innerHTML;
-  document.body.innerHTML = printDom;
-  window.print();
-  document.body.innerHTML = html;
+  var title = document.title;
+ var URL = document.URL;
+window.external.addFavorite(url, title);
 </script>
 </html>
