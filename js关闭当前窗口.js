@@ -1,0 +1,1 @@
+引用 MDN 的解释，window.close 只能关闭由 window.open 方法打开的页面。网上说在 FireFox 下直接使用 window.close 可能会有问题。最好先执行一下 window.open('', '_self') 后再执行 window.close
