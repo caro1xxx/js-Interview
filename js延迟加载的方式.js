@@ -1,0 +1,6 @@
+ayscn
+defer
+动态创建dom
+setTimeout
+jQuery的getScript方法
+把script置于body之后
