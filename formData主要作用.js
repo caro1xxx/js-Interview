@@ -1,0 +1,3 @@
+用于后端参数处理为multipart/form-data的情况下 ，现在通常用于上传文件
+new FormData实例
+使用append操作
