@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./==转换规则.js"></script>
+</head>
+<body>
+  <button id="remove">移除</button>
+</body>
+<script>
+  let remove = document.getElementById('remove');
+  remove.addEventListener('click',function(){
+    let head = document.getElementsByTagName('head')[0];
+    let nodeList = head.childNodes
+    console.log(nodeList);
+    for(let i=0;i<nodeList.length;i++){
+      if(nodeList[i].tagName === 'SCRIPT'){
+        head.removeChild(head.childNodes[i])
+      }
+    }
+    console.log(head);
+  })
+</script>
+</html>
