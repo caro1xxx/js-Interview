@@ -1,0 +1,2 @@
+在控制台打印Array.prototype
+然后一直找下一层的prototype会发现Array的原型就是Object
