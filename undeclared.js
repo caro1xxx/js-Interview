@@ -1,0 +1,1 @@
+undeclared指的是没有声明的变量。所以undefined表示声明了，实际存在的，但是未初始化，undeclared则是为声明的，实际不存在的
