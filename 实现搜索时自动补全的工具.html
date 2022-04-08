@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+                                                        <!-- onporpertychange && oninput 浏览器兼容 -->
+  <input type="text" id="inp" oninput="getValue()" onporpertychange="getValue()" style="font-size:15px;font-weight: 600;">
+  <div style="position: absolute;top:10px;color: rgb(170, 170, 170);z-index: 0;font-size:15px" id="d"></div>
+<script>
+    let arr =['googole','baidu','taobao','']
+    function getValue (){
+      let inp = document.getElementById('inp');
+      let d = document.getElementById('d');
+      arr.forEach(item=>{
+        if(item.indexOf(inp.value) >-1){
+          d.innerText = item
+        }
+      })
+    }
+    
+  </script>
+</body>
+
+</html>
