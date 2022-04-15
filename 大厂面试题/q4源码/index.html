@@ -13,6 +13,8 @@
   function download(url, name) {
   const a = document.createElement("a");
   a.download = name;
+  //  rel 属性用于指定当前文档与被链接文档的关系
+  // 超链接添加rel="noopener noreferrer"来防止钓鱼网站，因为它获取的window.opener的值为null
   a.rel = "noopener";
   a.href = url;
   // 触发模拟点击
