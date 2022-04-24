@@ -1,0 +1,70 @@
+> 这是一道前端基础与编程功底具备的面试题：
+
+* 如果你前端基础强会了解 `document.querySelector(*)` 能够列出页面内所有标签
+
+* 如果你编程能力强能够用**递归**/**正则**快速实现同等的效果
+
+> 三种方法实现
+
+1. `document.querySelector('*')`，标准规范实现
+2. `$$('*')`，devtools 实现
+3. `document.all`，非标准规范实现
+
+> 一
+
+```bash
+> document.querySelectorAll('*')
+< NodeList(593) [html, head, meta, meta, meta, meta, meta, meta, meta, title, link#favicon, link, link#MainCss, link#mobile-style, link, link, link, script, script, script, script, script, script, script, link, script, link, link, script, input#_w_brink, body, a, div#home, div#header, div#blogTitle, a#lnkBlogLogo, img#blogLogo, h1, a#Header1_HeaderTitle.headermaintitle.HeaderMainTitle, h2, div#navigator, ul#navList, li, a#blog_nav_sitehome.menu, li, a#blog_nav_myhome.menu, li, a#blog_nav_newpost.menu, li, a#blog_nav_contact.menu, li, a#blog_nav_rss.menu, li, a#blog_nav_admin.menu, div.blogStats, span#stats_post_count, span#stats_article_count, span#stats-comment_count, div#main, div#mainContent, div.forFlow, div#post_detail, div#topics, div.post, h1.postTitle, a#cb_post_title_url.postTitle2.vertical-middle, span, div.clear, div.postBody, div#cnblogs_post_body.blogpost-body, p, p, strong, p, p, p, strong, div.cnblogs_code, pre, span, span, span, span, span, p, span, strong, pre, strong, span, strong, br, br, br, div.cnblogs_code, pre, span, span, p, p, …]
+[0 … 99]
+[100 … 199]
+[200 … 299]
+[300 … 399]
+[400 … 499]
+[500 … 592]
+__proto__: NodeList
+```
+
+> 二
+
+```js
+// 实现一个 maxBy 方便找出出现次数最多的 HTML 标签
+const maxBy = (list, keyBy) =>
+  list.reduce((x, y) => (keyBy(x) > keyBy(y) ? x : y));
+
+function getFrequentTag() {
+  const tags = [...document.querySelectorAll("*")]
+    .map((x) => x.tagName)
+    .reduce((o, tag) => {
+      o[tag] = o[tag] ? o[tag] + 1 : 1;
+      return o;
+    }, {});
+  return maxBy(Object.entries(tags), (tag) => tag[1]);
+}
+```
+
+> 三
+
+```js
+function getAllTags(el = document) {
+  const children = Array.from(el.children).reduce(
+    (x, y) => [...x, ...getAllTags(y)],
+    []
+  );
+  return children;
+}
+
+// 或者通过 flatMap 实现
+function getAllTags(el = document) {
+  const children = Array.prototype.flatMap.call(el.children, (x) =>
+    getAllTags(x)
+  );
+  return [el, ...children];
+}
+```
+
+
+
+
+
+
+

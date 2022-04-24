@@ -1,0 +1,1 @@
+参见https://www.zhangxinxu.com/study/201708/svg-foreignobject-dom-to-image.html
