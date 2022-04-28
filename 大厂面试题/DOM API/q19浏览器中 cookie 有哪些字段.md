@@ -1,0 +1,6 @@
+- Domain (cookie所在域 即作用域)
+- Path (cookie所在路径 即作用域)
+- Expire/MaxAge (cookie有效期)
+- HttpOnly (HttpOnly是包含在Set-Cookie HTTP**响应头文件中的附加标志**。生成cookie时使用HttpOnly标志有助于**降低客户端脚本访问受保护cookie的风险**（如果浏览器支持）)**(就是把httponly设置为true后,前端是无法再拿到cookie了,只能从后端修改cookie,从而减低风险)**
+- Secure (标记为 `Secure` 的 Cookie 只应通过被 **HTTPS 协议加密过**的请求发送给服务端，因此可以预防 [man-in-the-middle](https://developer.mozilla.org/zh-CN/docs/Glossary/MitM) 攻击者的攻击)
+- SameSite (可以指定是否自动携带cookie)
