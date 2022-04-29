@@ -1,0 +1,3 @@
+- None: **任何情况**下都会向第三方网站请求发送 Cookie
+- Lax: **只有导航到第三方网站**的 Get 链接会发送 Cookie，跨域的图片、iframe、form 表单都不会发送 Cookie
+- Strict: 任何情况下**都不会向**第三方网站请求发送 Cookie
