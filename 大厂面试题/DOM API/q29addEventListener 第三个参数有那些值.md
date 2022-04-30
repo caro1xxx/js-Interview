@@ -1,0 +1,4 @@
+- capture。监听器会在**时间捕获阶段传播到 event.target 时触发。**
+- passive。监听器**不会调用 preventDefault()。**
+- once。监听器**只会执行一次**，执行后移除。
+- singal。**调用 abort()移除监听器。**
