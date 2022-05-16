@@ -6,6 +6,7 @@
 
 
 function sum(...args) {
+    // 这里主要是为了应对sum(2, 3)(2)这种情况，多次调用
     const f = (...rest) => sum(...args, ...rest);
     // valueOf将保存着这个箭头函数
     f.valueOf = () => args.reduce((x, y) => x + y, 0);
