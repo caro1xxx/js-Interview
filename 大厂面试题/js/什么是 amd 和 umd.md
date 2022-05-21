@@ -1,5 +1,5 @@
 > amd是浏览器中的模块格式(关键字define)
-> cjs是node中的模块格式(关键字export/requeire)
+> cjs(commonjs)是node中的模块格式(关键字export/requeire)
 
 > umd就是amd和cjs两种格式的兼容，能够同时运行在浏览器和node中
 
