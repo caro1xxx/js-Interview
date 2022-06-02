@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="head flooter" id="x">
+        1
+    </div>
+</body>
+<script>
+    function getDomClassListAndId(dom) {
+        if (!(dom instanceof HTMLElement) || dom.nodeType !== 1) return;
+                                        // 这里将classList转为Array
+        return { id: dom.id, classList: Array.from(dom.classList) };
+    }
+
+    let box = window.document.querySelector('div')
+
+    console.log(getDomClassListAndId(box))
+</script>
+</html>
