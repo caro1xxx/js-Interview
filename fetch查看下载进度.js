@@ -6,8 +6,8 @@ fetch('xxxx')
         reader = res.body.getReader()
     })
     .then(res=>{
-        //reader的read方法可以获取到reader内部的下载blob
-        // done代表是否完成，value代表以及传输的blob
+        //reader的read方法可以获取到reader内部的下载chunk
+        // done代表是否完成，value代表以及传输的chunk
         let {done,value} = reader.read()
     })
 
