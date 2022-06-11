@@ -1,7 +1,6 @@
 let reader = null
 
 
-// 2022-06-11
 fetch('xxxx')
     .then(res=>{
         // getReader()返回一个promise
