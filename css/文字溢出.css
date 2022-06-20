@@ -1,0 +1,5 @@
+.xx{
+    overflow: hidden;
+    white-space: norwarp;
+    text-overflow: ellipsis;
+}
