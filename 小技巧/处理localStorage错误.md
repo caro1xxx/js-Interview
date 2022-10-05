@@ -1,6 +1,6 @@
-> `当`localStorage超出配额时会抛出QuotaExceededError错误
->
-> 想要引发这个错误还必须得setItem
+当`localStorage`超出配额时会抛出`QuotaExceededError`错误
+
+想要引发这个错误还必须得setItem
 
 ```js
 try{
@@ -10,11 +10,11 @@ try{
 }
 ```
 
-> localStorage 不会**仅**在没有可用空间时抛出
->
-> 还会出现**其他错误**
+localStorage 不会**仅**在没有可用空间时抛出
 
-> 要**区分此类错误和有关配额的错误**，您可以尝试显式检测`QuotaExceededError`并采取相应措
+还会出现**其他错误**
+
+要**区分此类错误和有关配额的错误**，您可以尝试显式检测`QuotaExceededError`并采取相应措
 
 ```js
 function isQuotaExceededError(err: unknown): boolean {
